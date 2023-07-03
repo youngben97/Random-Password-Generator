@@ -1,3 +1,7 @@
+/*Current Functionality: page is displaying invalid input when you click button.
+page is running through prompts twice before generating password.
+generatePassword function is missing length option.*/
+
 function generatePassword() {
   let charPool = " ";
   let pass = " ";
@@ -18,23 +22,21 @@ function generatePassword() {
     };
 
   function collectInput() {
-    upperCase ();
-    lowerCase ();
-    numberSym ();
+    if (upperCase().toUpperCase() === "Y") {
+      charPool += UPPER;
+    }
+    if (lowerCase().toUpperCase() === "Y") {
+      charPool += LOWER;
+    }
+    if (numberSym().toUpperCase() === "Y") {
+      charPool += NUM_SYM;
+    }
   }
 
   function processInput () {
-  if (upperCase().toUpperCase() === "Y") {
-    charPool += UPPER;
-  } else if (lowerCase().toUpperCase() === "Y") {
-    charPool += LOWER;
-  } else if (numberSym().toUpperCase() === "Y") {
-    charPool += NUM_SYM;
-  } while (charPool = " ") {
+  } while (charPool === " ") {
     alert("Invalid input. Please select at least one option");
-    generatePassword.collectInput();
-  } 
-  return charPool;
+    collectInput();
  };
 
  function makePass () {
@@ -50,8 +52,7 @@ function generatePassword() {
   makePass ();
 
   return pass;
- };
-
+  };
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
