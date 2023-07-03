@@ -1,31 +1,57 @@
-// Assignment code here
-
-
-// function generatePassword() {
-
-  
-//   let pass = " ";
-//   const symbol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-// "abcdefghijklmnopqrstuvwxyz" + "0123456789@#$";
-//   for( i=0; i < symbol.length; i++) {
-//     var character = Math.floor(Math.random() * symbol.length + 1);
-//     pass += symbol.charAt(character)
-//   }
-//   return pass;
-// }
-
 function generatePassword() {
+  let charPool = " ";
   let pass = " ";
   const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const LOWER = "abcdefghijklmnopqrstuvwxyz";
   const NUM_SYM = "0123456789@#$";
 
-  let upperCase = prompt("Include uppercase letters, Y/N?");
-  let lowerCase = prompt("Include lowercase letters, Y/N?");
-  let numberSym = prompt("Include numbers and special characters, Y/N?");
-}
+  function upperCase () {
+    return prompt("Include uppercase letters, Y/N?");
+  };
 
-//Refer to function at top of page to write this function
+  function lowerCase () {
+    return prompt("Include lowercase letters, Y/N?");
+    };
+  
+  function numberSym () {
+    return prompt("Include numbers and special characters, Y/N?");
+    };
+
+  function collectInput() {
+    upperCase ();
+    lowerCase ();
+    numberSym ();
+  }
+
+  function processInput () {
+  if (upperCase().toUpperCase() === "Y") {
+    charPool += UPPER;
+  } else if (lowerCase().toUpperCase() === "Y") {
+    charPool += LOWER;
+  } else if (numberSym().toUpperCase() === "Y") {
+    charPool += NUM_SYM;
+  } while (charPool = " ") {
+    alert("Invalid input. Please select at least one option");
+    generatePassword.collectInput();
+  } 
+  return charPool;
+ };
+
+ function makePass () {
+  for ( let i = 0; i < charPool.length; i++) {
+    let charSelect = Math.floor(Math.random() * charPool.length + 1);
+    pass += charPool.charAt(charSelect);
+   }
+   return pass;
+  }
+  
+  collectInput();
+  processInput ();
+  makePass ();
+
+  return pass;
+ };
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
