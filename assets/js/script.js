@@ -32,16 +32,17 @@ function generatePassword() {
       charPool += NUM_SYM;
     }
   }
-
+// changed while-loop syntax issue (bracket placement). this is what was causing the invalid message and the double-call of collectinput
   function processInput () {
-  } while (charPool === " ") {
+    while (charPool === " ") {
     alert("Invalid input. Please select at least one option");
     collectInput();
- };
-
+    }
+  };
+//changed +1 to -1 after charpool.length (line 45) so that the range would fall within the index
  function makePass () {
   for ( let i = 0; i < charPool.length; i++) {
-    let charSelect = Math.floor(Math.random() * charPool.length + 1);
+    let charSelect = Math.floor(Math.random() * charPool.length - 1);
     pass += charPool.charAt(charSelect);
    }
    return pass;
