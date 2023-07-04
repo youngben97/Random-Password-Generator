@@ -1,13 +1,12 @@
-/*Current Functionality: page is displaying invalid input when you click button.
-page is running through prompts twice before generating password.
-generatePassword function is missing length option.*/
-
 function generatePassword() {
-  let charPool = " ";
-  let pass = " ";
+  let charPool = "";
   const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const LOWER = "abcdefghijklmnopqrstuvwxyz";
   const NUM_SYM = "0123456789@#$";
+
+  const lengthChoose = function() {
+    return prompt("Select password length (8-128 characters).")
+  }
 
   function upperCase () {
     return prompt("Include uppercase letters, Y/N?");
@@ -24,25 +23,27 @@ function generatePassword() {
   function collectInput() {
     if (upperCase().toUpperCase() === "Y") {
       charPool += UPPER;
-    }
+    };
     if (lowerCase().toUpperCase() === "Y") {
       charPool += LOWER;
-    }
+    };
     if (numberSym().toUpperCase() === "Y") {
       charPool += NUM_SYM;
-    }
+    };
   }
-// changed while-loop syntax issue (bracket placement). this is what was causing the invalid message and the double-call of collectinput
+
   function processInput () {
-    if (charPool === " ") {
+    if (charPool === "") {
     alert("Invalid input. Please select at least one option");
     collectInput();
     }
   };
-//changed +1 to -1 after charpool.length (line 45) so that the range would fall within the index
+
  function makePass () {
-  for ( let i = 0; i < charPool.length; i++) {
-    let charSelect = Math.floor(Math.random() * charPool.length - 1);
+  let pass = ""
+  const passLength = parseFloat(lengthChoose());
+  for ( let i = 0; i < passLength; i++) {
+    let charSelect = Math.floor(Math.random() * charPool.length);
     pass += charPool.charAt(charSelect);
    }
    return pass;
@@ -50,7 +51,7 @@ function generatePassword() {
   
   collectInput();
   processInput ();
-  makePass ();
+  const pass = makePass ();
 
   return pass;
   };
