@@ -1,6 +1,8 @@
-/*Current Functionality: page is displaying invalid input when you click button.
-page is running through prompts twice before generating password.
-generatePassword function is missing length option.*/
+// turn charPool into an array
+// splice array randomly
+// revert array to string (toString method)
+// plug string into makePass
+
 
 function generatePassword() {
   let charPool = " ";
@@ -9,6 +11,9 @@ function generatePassword() {
   const LOWER = "abcdefghijklmnopqrstuvwxyz";
   const NUM_SYM = "0123456789@#$";
 
+  // const lengthChoose = function() {
+  //   return prompt("Select password length (8-128 characters).")
+  // };
   function upperCase () {
     return prompt("Include uppercase letters, Y/N?");
   };
@@ -22,6 +27,8 @@ function generatePassword() {
     };
 
   function collectInput() {
+    // lengthChoose();
+
     if (upperCase().toUpperCase() === "Y") {
       charPool += UPPER;
     }
@@ -31,18 +38,28 @@ function generatePassword() {
     if (numberSym().toUpperCase() === "Y") {
       charPool += NUM_SYM;
     }
-  }
-// changed while-loop syntax issue (bracket placement). this is what was causing the invalid message and the double-call of collectinput
+  };
+  // string from lengthChoose needs to be converted from string to number
+
+  //changed this to a conditional statement
   function processInput () {
-    while (charPool === " ") {
+    if (charPool === " ") {
     alert("Invalid input. Please select at least one option");
     collectInput();
+    // } else {
+    //   parseFloat(lengthChoose);
+    //   let charArray = charPool.split(" ");
+    //   for (let i=0; i < charArray.length; i++) {
+    //     let spliceSelect = Math.floor(Math.random() * lengthChoose);
+    //     charArray.splice(spliceSelect);
+    //   } charPool = charArray.toString();
+    //   return charPool;
     }
   };
-//changed +1 to -1 after charpool.length (line 45) so that the range would fall within the index
- function makePass () {
-  for ( let i = 0; i < charPool.length; i++) {
-    let charSelect = Math.floor(Math.random() * charPool.length - 1);
+
+  function makePass () {
+  for ( let i = 0; i < charPool; i++) {
+    let charSelect = Math.floor(Math.random() * processInput.charPool - 1);
     pass += charPool.charAt(charSelect);
    }
    return pass;
