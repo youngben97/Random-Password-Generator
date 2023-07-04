@@ -30,7 +30,7 @@ I then built in functions that allowed a user to choose parameters for the passw
 
 Link to app: https://youngben97.github.io/Random-Password-Generator/
 
-[Screenshot of App](docs/assets/app.png)
+[Screenshot of App](docs/app.png)
 
 
 ## Installation:
